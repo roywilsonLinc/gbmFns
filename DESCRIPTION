@@ -1,0 +1,14 @@
+Package: gbmFns
+Title: Functions to enhance gbm analyses and reporting
+Version: 0.1
+Authors@R: "Roy Wilson <roy.wilson@lincresearch.com> [aut, cre]"
+Description: gbmFns provides functions to assist users with gbm based analyses
+Depends:
+    R (>= 3.0.3)
+License: GPL-2
+LazyData: true
+Imports:
+    ggplot2,
+    gbm,
+    reshape2,
+    cowplot

@@ -1,6 +1,6 @@
 #'GBM plot of ordered relative influence and missing values.
 #'
-#'\code{gbm.plot.NA} plots relative influence and NA from gbm.
+#'\code{gbm.relimp} plots relative importances and number of NAs from gbm.
 #'
 #'@param gbm.model A gbm model to be plotted.
 #'@param relimp.range A vector of length 2 giving upper and lower
@@ -8,17 +8,17 @@
 #'@return plot of relative influence and NAs of gbm model.
 #'@examples
 #'\dontrun{
-#'gbm.plot.NA(gbm.model=gbm1,df=data1)
+#'gbm.relimp(gbm.model=gbm1,df=data1)
 #'}
 
 #'@import gbm
 #'@import reshape2
 #'@import cowplot
-#'@export gbm.plot.NA
+#'@export gbm.relimp
 
 #gbm NA and relative influence plots
 
-gbm.plot.NA <- function(gbm.model,relimp.range){
+gbm.relimp <- function(gbm.model,relimp.range){
 
 gbm.sum.all <- summary(gbm.model,plotit=F)
 
@@ -52,8 +52,8 @@ na.count <- function(x){
 }
 
 #Create dataframe from gbm object##########################################
-x.mat <- matrix(gbm1$data$x,length(gbm1$data$y),length(gbm1$data$x)/length(gbm1$data$y))
-colnames(x.mat) <- gbm1$var.names
+x.mat <- matrix(gbm.model$data$x,length(gbm.model$data$y),length(gbm.model$data$x)/length(gbm.model$data$y))
+colnames(x.mat) <- gbm.model$var.names
 
 x.mat.sub <- x.mat[,rownames(gbm.sum)]
 

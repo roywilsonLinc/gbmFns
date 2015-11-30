@@ -16,7 +16,6 @@
 #'relimp.range=c(1,100),num.row=4,num.col=4)
 #'}
 
-
 #'@import gbm
 #'@import reshape2
 #'@import cowplot
@@ -45,7 +44,7 @@ gbm.effectplot <- function(gbm.model,relimp.range,y.label,num.row,num.col){
   df <- as.data.frame(x.mat)
   
   #Assign factor class to factor inputs
-  factor.vec <- which(sapply(gbm1$var.levels,class)=="character")
+  factor.vec <- which(sapply(gbm.model$var.levels,class)=="character")
   
   df[,factor.vec] <- lapply(df[,factor.vec],function(x){as.factor(x)})
   

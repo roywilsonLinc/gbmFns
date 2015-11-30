@@ -81,7 +81,7 @@ gbm.survfns <- function(gbm.model,t.eval.max,plot.it=FALSE){
   
   #plots
   
-  if(plot.it == TRUE){
+  if(plot.it){
   p1 <- ggplot(haz.df,aes(x=time,y=cdf))+geom_line()+
     ggtitle("Estimated CDF of base survival distribution")+
     scale_x_continuous("Time")+
@@ -101,6 +101,9 @@ gbm.survfns <- function(gbm.model,t.eval.max,plot.it=FALSE){
     ggtitle("Estimated base pdf for survival distribution")+
     scale_x_continuous("Time")+
     scale_y_continuous(expression(Pr (t)))
+  
+  print(plot_grid(p1,p2,p3,p4))
+  
   }
 
   return(haz.df)

@@ -30,9 +30,9 @@ gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,vars.keep,ntrees){
   #generate predictions of proportional hazards for the newdata
   
   if(is.null(data.in)){
-    pred.new <- predict(gbm.in,n.trees=ntrees)
+    pred.new <- predict(gbm.model,n.trees=ntrees)
   }else{
-    pred.new <- predict(gbm.in,newdata=data.in,n.trees=ntrees)
+    pred.new <- predict(gbm.model,newdata=data.in,n.trees=ntrees)
   }
 
   #use internal data from gbm object

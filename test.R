@@ -1,8 +1,10 @@
 
+install_github("roywilsonLinc/gbmFns")
+
+library(gbmFns)
+
 library(devtools)
 library(roxygen2)
-
-
 
 devtools::document()
 
@@ -51,4 +53,4 @@ library(ggplot2)
 library(cowplot)
 library(reshape2)
 
-
+?gbmFns

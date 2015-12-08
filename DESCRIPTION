@@ -11,4 +11,5 @@ Imports:
     ggplot2,
     gbm,
     reshape2,
-    cowplot
+    cowplot,
+    data.table

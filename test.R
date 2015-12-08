@@ -3,6 +3,8 @@ install_github("roywilsonLinc/gbmFns")
 
 library(gbmFns)
 
+?gbmFns
+
 library(devtools)
 library(roxygen2)
 

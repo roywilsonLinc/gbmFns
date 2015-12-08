@@ -99,8 +99,6 @@ gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,vars.keep,ntrees){
   haz.dt[,pdf := c(NA,diff(cdf))]
   
   #remove NAs
-  na.omit(haz.dt)
-  
   return(haz.dt)
   
 }

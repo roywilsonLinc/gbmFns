@@ -7,6 +7,7 @@
 #'	to which estimates should be extended
 #'@param data.in A dataframe of inputs for prediction if NULL will use the orginal model dataframe
 #'@param ntrees The number of trees for predictions
+#'@param var.keep A character vector of variables from data.in to keep in the output data.table
 
 #'@return A data.table with hazard function outputs for each row in the prediction data
 #'@examples
@@ -20,7 +21,9 @@
 #'@export gbm.pred.survfns
 ########################################
 
-gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,ntrees){
+gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,vars.keep,ntrees){
+  
+  pars.in <- as.list(match.call()[-1]) 
   
   t.eval.v <- 1:max.time
   
@@ -73,15 +76,19 @@ gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,ntrees){
     lambda.t <- extrap.df$lambda.t
   }
   
+  #define portion of data.in to keep
+  data.in.keep <- data.in[,vars.keep]
+  data.in.keep.expand <- data.in.keep[rep(seq_len(nrow(data.in.keep)),each=length(t.eval.v)),]
+  
   #create data.table that holds a function for every case predicted
   t.eval.v.rep <- rep(t.eval.v,times=length(pred.new))
   lambda.t.rep <- rep(lambda.t,times=length(pred.new))
   biglambda.t.rep <- rep(biglambda.t,times=length(pred.new))
   preds.rep <- rep(preds.new,each=length(t.eval.v))
   
-  haz.dt <- data.table(t.eval.v.rep,lambda.t.rep,biglambda.t.rep,preds.rep)
+  haz.dt <- data.table(t.eval.v.rep,lambda.t.rep,biglambda.t.rep,preds.rep,data.in.keep.expand)
   
-  setnames(haz.dt,c("time","lambda.t","biglambda.t","preds"))
+  setnames(haz.dt,c("time","lambda.t","biglambda.t","preds",keep.expand))
   
   haz.dt[,lambda.tx := lambda.t*exp(preds)]
   haz.dt[,s.t := (exp(-biglambda.t))^exp(preds)]

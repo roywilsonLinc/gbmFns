@@ -9,7 +9,6 @@ library(devtools)
 library(roxygen2)
 
 devtools::document()
-
 devtools::load_all()
 
 # A least squares regression example # create some data

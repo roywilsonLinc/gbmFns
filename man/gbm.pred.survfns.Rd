@@ -4,7 +4,7 @@
 \alias{gbm.pred.survfns}
 \title{Predict survival functions and distributions for gbm cph models}
 \usage{
-gbm.pred.survfns(gbm.model, max.time, data.in = NULL, ntrees)
+gbm.pred.survfns(gbm.model, max.time, data.in = NULL, vars.keep, ntrees)
 }
 \arguments{
 \item{gbm.model}{A gbm model to extract survival functions and desities from.}
@@ -15,6 +15,8 @@ to which estimates should be extended}
 \item{data.in}{A dataframe of inputs for prediction if NULL will use the orginal model dataframe}
 
 \item{ntrees}{The number of trees for predictions}
+
+\item{var.keep}{A character vector of variables from data.in to keep in the output data.table}
 }
 \value{
 A data.table with hazard function outputs for each row in the prediction data

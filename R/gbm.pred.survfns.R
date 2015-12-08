@@ -84,11 +84,11 @@ gbm.pred.survfns <- function(gbm.model,max.time,data.in=NULL,vars.keep,ntrees){
   t.eval.v.rep <- rep(t.eval.v,times=length(pred.new))
   lambda.t.rep <- rep(lambda.t,times=length(pred.new))
   biglambda.t.rep <- rep(biglambda.t,times=length(pred.new))
-  preds.rep <- rep(preds.new,each=length(t.eval.v))
+  preds.rep <- rep(pred.new,each=length(t.eval.v))
   
   haz.dt <- data.table(t.eval.v.rep,lambda.t.rep,biglambda.t.rep,preds.rep,data.in.keep.expand)
   
-  setnames(haz.dt,c("time","lambda.t","biglambda.t","preds",keep.expand))
+  setnames(haz.dt,c("time","lambda.t","biglambda.t","preds",vars.keep))
   
   haz.dt[,lambda.tx := lambda.t*exp(preds)]
   haz.dt[,s.t := (exp(-biglambda.t))^exp(preds)]

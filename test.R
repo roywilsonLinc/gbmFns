@@ -4,6 +4,7 @@ install_github("roywilsonLinc/gbmFns")
 library(gbmFns)
 
 ?gbmFns
+install.packages("roxygen2")
 
 library(devtools)
 library(roxygen2)

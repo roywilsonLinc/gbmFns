@@ -13,3 +13,4 @@ Imports:
     reshape2,
     cowplot,
     data.table
+RoxygenNote: 5.0.1

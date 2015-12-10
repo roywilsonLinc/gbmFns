@@ -12,7 +12,6 @@
 #'}
 
 #'@import gbm
-#'@import reshape2
 #'@import cowplot
 #'@export gbm.relimp
 

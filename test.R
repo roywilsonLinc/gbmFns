@@ -1,6 +1,6 @@
 
 install_github("roywilsonLinc/gbmFns")
-?suppressWarnings
+
 library(gbmFns)
 
 
@@ -10,7 +10,6 @@ library(devtools)
 library(roxygen2)
 
 library(gbmFns)
-?gbmFns
 
 devtools::document()
 devtools::load_all()

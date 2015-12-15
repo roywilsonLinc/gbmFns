@@ -19,7 +19,7 @@
 #'@import gbm
 #'@import foreach
 #'@import doParallel
-#'@export GBMInt2
+#'@export gbm.int2
 
 gbm.int2 <- function(gbm.model,relimp.range,n.trees,n.cores=NULL){
   
